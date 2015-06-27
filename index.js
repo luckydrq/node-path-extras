@@ -2,6 +2,7 @@
 
 var assert = require('assert');
 var path = require('path');
+var os = require('os');
 var resolvePath = path.resolve;
 var slice = [].slice;
 
@@ -40,4 +41,43 @@ exports.inpath = function inpath(a, b /*...*/) {
   }
 
   return true;
+};
+
+var RE_RELATIVE = /^\.{1,2}[\\\/]/;
+var RE_WIN_ABSOLUTE = /^[a-zA-Z]:\\/;
+var RE_ABSOLUTE = /^\/[^\/]/;
+
+exports.isRelative = function isRelative(p) {
+  if (os.platform === 'win32') {
+    return !RE_WIN_ABSOLUTE.test(p) || RE_RELATIVE.test(p);
+  } else {
+    return !RE_ABSOLUTE.test(p) || RE_RELATIVE.test(p);
+  }
+};
+
+exports.isAbsolute = function isAbsolute(p) {
+  return !exports.isRelative(p);
+};
+
+exports.unique = function unique(arr) {
+  assert(typeof arr === 'object' && arr.hasOwnProperty('length'), 'array required');
+
+  var len = arr.length, resultArr = arr.slice(0);
+  for (var i = len - 1; i > 0; i--) {
+    for (var j = 0; j < i; j++) {
+      var p1 = arr[j];
+      var p2 = arr[j + 1];
+      if (exports.contains(p1, p2)) {
+        resultArr = resultArr.filter(function(p) {
+          return p !== p2;
+        });
+      } else if (exports.contains(p2, p1)) {
+        resultArr = resultArr.filter(function(p) {
+          return p !== p1;
+        });
+      }
+    }
+  }
+
+  return resultArr;
 };
