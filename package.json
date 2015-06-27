@@ -1,0 +1,20 @@
+{
+  "name": "node-path-extras",
+  "version": "0.1.0",
+  "keywords": [
+    "path",
+    "extras"
+  ],
+  "author": "luckydrq",
+  "email": "drqzju@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:luckydrq/node-path-extras.git"
+  },
+  "scripts": {
+    "test": "mocha test/test.js"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5"
+  }
+}
