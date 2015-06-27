@@ -19,7 +19,9 @@ opposite to `path.contains`
   console.log(path.within('/a/b', '/a')); // true
 ```
 
-## path.along(aPath, bPath /*...*/)  `alias path.inpath`
+## path.along(aPath, bPath /*...*/)
+
+alias for `path.inpath`
 
 ```javascript
   var path = require('node-path-extras');
