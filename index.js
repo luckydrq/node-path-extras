@@ -19,7 +19,7 @@ exports.within = function within(subPath, mainPath) {
   return exports.contains(mainPath, subPath);
 };
 
-exports.alone =
+exports.along =
 exports.inpath = function inpath(a, b /*...*/) {
   assert(arguments.length >= 2, 'args should be no less than 2');
 
