@@ -55,7 +55,7 @@ exports.isRelative = function isRelative(p) {
   }
 };
 
-exports.isAbsolute = function isAbsolute(p) {
+exports.isAbsolute = path.isAbsolute || function isAbsolute(p) {
   return !exports.isRelative(p);
 };
 
