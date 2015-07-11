@@ -4,6 +4,8 @@ var assert = require('assert');
 var path = require('path');
 var os = require('os');
 var resolvePath = path.resolve;
+var normalizePath = path.normalize;
+var sep = path.sep;
 var slice = [].slice;
 
 exports.contains = function contains(mainPath, subPath) {
@@ -80,4 +82,37 @@ exports.unique = function unique(arr) {
   }
 
   return resultArr;
+};
+
+exports.common = function common(arr) {
+  assert(typeof arr === 'object' && arr.hasOwnProperty('length'), 'array required');
+
+  if (arr.length === 1) {
+    return null;
+  }
+
+  var commonParts = [];
+  arr = arr.map(function(p) {
+    return normalizePath(p).split(sep);
+  });
+
+  var iterate = true, i = 0, len = arr.length;
+  while(iterate) {
+    for (var j = 0; j < len - 1; j++) {
+      if (arr[j][i] !== arr[j + 1][i]) {
+        iterate = false;
+        break;
+      }
+    }
+    if (iterate) {
+      commonParts.push(arr[0][i]);
+      i++;
+    }
+  }
+
+  if (commonParts.length > 0) {
+    return commonParts.join(sep);
+  } else {
+    return null;
+  }
 };

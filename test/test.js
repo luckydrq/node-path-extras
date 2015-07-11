@@ -9,6 +9,7 @@ var inpath = path.inpath;
 var isRelative = path.isRelative;
 var isAbsolute = path.isAbsolute;
 var unique = path.unique;
+var common = path.common;
 
 describe('path extra test', function() {
   it('should contains', function() {
@@ -78,5 +79,17 @@ describe('path extra test', function() {
     assert(arr2.indexOf('/a/b') !== -1);
     assert(arr2.indexOf('/a/c') !== -1);
     assert(arr2.indexOf('/b/c') !== -1);
+  });
+
+  it('should common', function() {
+    var common1 = common(['/a/b/c', '/a/b/d', '/a/b/e/f']);
+    assert(common1 === '/a/b');
+
+    // root path
+    var common2 = common(['/a/b', '/b/c']);
+    assert(common2 === '');
+
+    var common3 = common(['a/b', '/a/b']);
+    assert(common3 === null);
   });
 });
