@@ -15,7 +15,7 @@ exports.contains = function contains(mainPath, subPath) {
   mainPath = resolvePath(mainPath);
   subPath = resolvePath(subPath);
   return subPath.indexOf(mainPath) === 0
-    && subPath.slice(mainPath.length)[0] === '/';
+    && subPath.slice(mainPath.length)[0] === sep;
 };
 
 exports.within = function within(subPath, mainPath) {
