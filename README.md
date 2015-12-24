@@ -1,4 +1,8 @@
 # node-path-extras
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
+[![Test coverage][coveralls-image]][coveralls-url]
+
 extra utilities for `path` module of nodejs
 
 # API
@@ -54,3 +58,13 @@ remove paths in the same route in an array
   var path = require('node-path-extras');
   console.log(path.unique(['/a/b', '/a', '/c'])); // ['/a', '/c']
 ```
+
+## Lisence
+MIT
+
+[npm-image]: https://img.shields.io/npm/v/node-path-extras.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/node-path-extras
+[travis-image]: https://img.shields.io/travis/luckydrq/node-path-extras/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/luckydrq/node-path-extras
+[coveralls-image]: https://img.shields.io/coveralls/luckydrq/node-path-extras/master.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/luckydrq/node-path-extras?branch=master
