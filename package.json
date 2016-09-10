@@ -17,6 +17,6 @@
   },
   "devDependencies": {
     "contributors": "~0.5.0",
-    "mocha": "^2.2.5"
+    "mocha": "^3.0.2"
   }
 }
